@@ -72,7 +72,6 @@
                     <th>No</th>
                     <th>Judul Buku</th>
                     <th>Penulis</th>
-                    <th>Deskripsi</th>
                     <th>Tahun Terbit</th>
                 </tr>
             </thead>
@@ -81,43 +80,42 @@
                     <td>1</td>
                     <td>Laskar Pelangi</td>
                     <td>Andrea Hirata</td>
-                    <td>Laskar Pelangi mengisahkan tentang sebelas anak yang berasal dari keluarga miskin, di mana mereka harus selalu berjuang dalam
-                        menempuh pendidikannya di sekolah sederhana yang ada di desa Balitong.</td>
                     <td>2005</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Cantik Itu Luka</td>
                     <td>Eka Kurniawan</td>
-                    <td>Seorang perempuan yang bangkit dari kuburannya setelah dua puluh satu tahun kematiannya.
-                        Kebangkitannya ini menguak kutukan dan tragedi keluarga yang menimpanya di akhir masa kolonial.</td>
                     <td>2002</td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Laut Bercerita</td>
                     <td>Leila S. Chudori</td>
-                    <td>Keluarga yang kehilangan, sekumpulan sahabat yang merasakan kekosongan di dada, sekelompok orang yang gemar menyiksa dan lancar berkhianat,
-                        sejumlah keluarga yang mencari kejelasan makam anaknya, dan tentang cinta yang tak akan luntur oleh waktu.</td>
                     <td>2017</td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>Tenggelamnya Kapal Van Der Wijck</td>
                     <td>Abdul Malik Karim Amrullah(Buya Hamka)</td>
-                    <td>kisah ibu baik hati dan penuh harapan akan sambutan gembira, saat ia dan keluarga kecilnya kembali ke tanah kelahiran ayahnya di Padang Panjang, Mengkasar.</td>
                     <td>1935</td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td>Ronggeng Dukuh Paruk</td>
                     <td>Ahmad Tohari</td>
-                    <td>Ronggeng Dukuh Paruk kisahkan penari ronggeng baru bernama Srintil, yang baru saja dinobatkan sebagai ronggeng terakhir setelah kematian 12 tahun ronggeng lamanya</td>
                     <td>1982</td>
                 </tr>
             </tbody>
         </table>
     </section>
+
+    <!-- Menampilkan Data dari Form -->
+    <section class="container mt-5">
+        <h2>Pesan Dari form</h2>
+        <p> {{ session('nama') }}</p>
+        <p> {{ session('message') }}</p>
+    </section><br>
 
     <!-- Footer -->
     <footer>
