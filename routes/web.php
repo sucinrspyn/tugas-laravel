@@ -22,8 +22,21 @@ Route::get('/home', function () {
 });
 
 
-Route::get("/create",[HomeController::class,"store"]);
+Route::get("/create", [HomeController::class, "store"]);
+
+Route::get("/create1", [HomeController::class, "store1"]);
+
+Route::get("/create2", [HomeController::class, "store2"]);
+
+Route::get("/create3", [HomeController::class, "store3"]);
 
 Route::get("/show", [HomeController::class, "show"]);
 
+Route::get('/products', [HomeController::class, 'show']);
+
+Route::get('/product/{id}/edit', [HomeController::class, 'edit']);
+
+Route::put('/product/{id}', [HomeController::class, 'update']);
+
+Route::delete('/product/{id}', [HomeController::class, 'destroy']);
 
