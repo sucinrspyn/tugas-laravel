@@ -78,8 +78,9 @@ public function form(Request $request){
 
     public function show()
     {
-        $Product = Product::all();
-        return view("tableProduct", ['Product' => $Product]);
+        $Product = Product::Paginate(4);
+
+        return view('tableProduct', compact("Product"));
     }
 
     public function edit($id)
