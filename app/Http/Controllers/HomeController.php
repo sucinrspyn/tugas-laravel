@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         // Data array yang berisi daftar buku
         $books = [
@@ -21,73 +23,49 @@ class HomeController extends Controller
 
         // Mengirim data buku ke view 'home'
         return view('home', ['books' => $books]);
-
     }
 
-public function form(Request $request){
-    $dataMessage = $request->message;
-}
-
-    public function store(){
-        $Product = new Product();
-        $Product->nama = "Laptop";
-        $Product->harga = 10000;
-        $Product->stok = 10;
-        $Product->deskripsi ="laptop murah";
-        $Product->save();
-
-        return ('data sukses dikirim');
-
-}
-
-    public function store1()
+    public function form(Request $request)
     {
-        $Product = new Product();
-        $Product->nama = "HandPhone";
-        $Product->harga = 50000;
-        $Product->stok = 30;
-        $Product->deskripsi = "HP murah";
-        $Product->save();
-
-        return ('data sukses dikirim');
+        $dataMessage = $request->message;
     }
 
-    public function store2()
+    public function store(Request $request)
     {
-        $Product = new Product();
-        $Product->nama = "Komputer";
-        $Product->harga = 20000;
-        $Product->stok = 15;
-        $Product->deskripsi = "Komputer murah";
+
+        $validator = validator::make($request->all(), [
+            'nama' => 'required|string|max:225',
+            'stok' => 'required|integer|min:50',
+            'harga' => 'required|numeric|min:2',
+            'deskripsi' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $Product = new product();
+        $Product->nama = $request->nama;
+        $Product->harga = $request->harga;
+        $Product->stok = $request->stok;
+        $Product->deskripsi = $request->deskripsi;
         $Product->save();
 
-        return ('data sukses dikirim');
-    }
-
-    public function store3()
-    {
-        $Product = new Product();
-        $Product->nama = "Televisi";
-        $Product->harga = 40000;
-        $Product->stok = 25;
-        $Product->deskripsi = "TV murah";
-        $Product->save();
-
-        return ('data sukses dikirim');
+        return redirect()->back();
     }
 
     public function show()
     {
         $Product = Product::Paginate(4);
-
-        return view('tableProduct', compact("Product"));
+        return view('tableProduct', ['Product' => $Product]);
     }
 
     public function edit($id)
     {
-        $Product = Product::findOrFail($id);
 
-        return view("editProduct",compact("Product"));
+        $Product =  product::findOrFail($id);
+
+        return view("editProduct", compact("Product"));
     }
 
     public function update(Request $request, $id)
@@ -100,7 +78,6 @@ public function form(Request $request){
         $Product->deskripsi = $request->deskripsi;
         $Product->save();
         return redirect('/show');
-
     }
 
     public function destroy($id)
@@ -109,6 +86,9 @@ public function form(Request $request){
         $Product->delete();
         return redirect('/show');
     }
-        }
 
-
+    public function input()
+    {
+        return view("inputProduct");
+    }
+}

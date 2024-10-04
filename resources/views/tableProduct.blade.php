@@ -107,7 +107,7 @@
     <table>
         <thead>
             <tr>
-                <th>No</th> <!-- Kolom No -->
+                <th>No</th>
                 <th>Nama</th>
                 <th>Harga</th>
                 <th>Stok</th>
@@ -116,7 +116,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($Product as $index => $productItem) <!-- Menambahkan $index untuk nomor -->
+            @foreach ($Product as $index => $productItem)
                 <tr>
                     <th scope="row">{{ $index + $Product->firstitem() }}</th>
                     <td>{{ $productItem->nama }}</td>
@@ -139,7 +139,7 @@
     </table>
 
     <div class="pagination">
-        {{ $Product->links() }} <!-- Memastikan $Product tetap digunakan di sini untuk pagination -->
+        {{ $Product->links() }}
     </div>
 
 </body>
